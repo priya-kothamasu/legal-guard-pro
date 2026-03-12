@@ -1,8 +1,7 @@
 import streamlit as st
 import os
-from backend.analyzer import LegalAnalyzer
-from backend.utils import scrape_url
-
+from analyzer import LegalAnalyzer
+from utils import scrape_url
 st.set_page_config(page_title="LegalGuard AI Pro", page_icon="⚖️", layout="wide")
 
 @st.cache_resource
