@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(page_title="LegalGuard AI Pro", page_icon="⚖️", layout="wide")
 
@@ -50,7 +51,8 @@ with col_l:
         else:
             with st.spinner("Analyzing risk linguistic patterns..."):
                 try:
-                    res = requests.post("http://127.0.0.1:8000/analyze", data=data_payload, files=files_payload)
+                    BACKEND_URL = os.environ.get("BACKEND_URL", "http://127.0.0.1:8000")
+                    res = requests.post(f"{BACKEND_URL}/analyze", data=data_payload, files=files_payload)
                     if res.status_code == 200:
                         st.session_state.audit = res.json()
                     else:
