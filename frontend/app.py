@@ -43,22 +43,22 @@ with col_l:
     if st.button("Execute Neural Audit", use_container_width=True):
         text = ""
         if src == "PDF Document" and uploaded_file:
-            with st.spinner("Extracting PDF content..."):
+            with st.spinner("Neural Engine: Extracting PDF..."):
                 text = analyzer.extract_pdf_text(uploaded_file.getvalue())
         elif src == "Web URL" and content:
-            with st.spinner("Scraping URL..."):
+            with st.spinner("Neural Engine: Scraping URL..."):
                 text = scrape_url(content)
         elif content:
             text = content
         
         if not text:
-            st.error("Please provide valid input to audit.")
+            st.error("Audit Failed: No readable text found.")
         else:
-            with st.spinner("Analyzing risk linguistic patterns..."):
+            with st.spinner("Running Neural Risk Audit..."):
                 findings = analyzer.analyze_text(text)
                 evidence = analyzer.get_evidence(text)
                 
-                # Calculate Score
+                # Logic to calculate score
                 score = 100
                 for f in findings:
                     score -= 15 if f['risk'] == "High" else 7
@@ -69,7 +69,8 @@ with col_l:
                     "findings": findings,
                     "evidence": evidence
                 }
-
+                # --- THE CRITICAL LINE ---
+                st.rerun()
 with col_r:
     if "audit" in st.session_state:
         data = st.session_state.audit
