@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+transformers
+torch
+spacy
+beautifulsoup4
+requests
+pymupdf
+python-multipart
+python-dotenv
