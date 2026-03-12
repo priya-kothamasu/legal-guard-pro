@@ -2,11 +2,12 @@ from transformers import pipeline
 import fitz  # PyMuPDF
 import re
 
-class LegalAnalyzer:
-    def __init__(self):
-        print("Initializing Professional Audit Engine...")
-        # zero-shot for category risk mapping
-        self.classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+def __init__(self):
+    print("Initializing Professional Audit Engine...")
+    self.classifier = pipeline(
+            "zero-shot-classification", 
+            model="valhalla/distilbart-mnli-12-3"
+        )
 
     def extract_pdf_text(self, file_bytes):
         """Robust PDF extraction for large documents."""
