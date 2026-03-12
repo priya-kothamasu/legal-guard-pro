@@ -2,9 +2,10 @@ from transformers import pipeline
 import fitz  # PyMuPDF
 import re
 
-def __init__(self):
-    print("Initializing Professional Audit Engine...")
-    self.classifier = pipeline(
+class LegalAnalyzer:
+    def __init__(self):
+        print("Initializing Professional Audit Engine...")
+        self.classifier = pipeline(
             "zero-shot-classification", 
             model="valhalla/distilbart-mnli-12-3"
         )
